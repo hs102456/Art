@@ -9,7 +9,7 @@ html {
 h1 {
     background-color:white;
     text-align:center;
-    background-image: url(github/asap/paint.jpg);
+    background-image: url(..asap/paint.jpg);
     border: 3px solid black;
     padding: 10px 20px;
 }
@@ -39,7 +39,7 @@ nav li {
     margin-right: 30px;
     background-color:#e8e6e1 ;
     border: 1px gray;
-    background-image: url(github/asap/paint.jpg);
+    background-image: url(..asap/paint.jpg);
     background-position: top;
 }
 

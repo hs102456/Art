@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <title>Products and Pricing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="petportraits.css">
+   <link rel="stylesheet" href="petportraits.css">
 
     <h1>Products and Pricing</h1>
 
@@ -36,4 +36,83 @@
             </tr>
         </tbody>
     </table>
+
+    <div id="smart-button-container">
+        <div style="text-align: center;">
+          <div id="paypal-button-container"></div>
+        </div>
+      </div>
+    <script src="https://www.paypal.com/sdk/js?client-id=AdzjXke4OxkMjDBjHxGZMU0Uk0ICcHo3GN3Kc_VxdzeM_Z9O7rp-GQdK7sb5KK0GjJYfcZFnybcg8fa7&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <script>
+      function initPayPalButton() {
+        paypal.Buttons({
+          style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'paypal',
+            
+          },
+  
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{"description":"11x14 Canvas","amount":{"currency_code":"USD","value":40,"breakdown":{"item_total":{"currency_code":"USD","value":25},"shipping":{"currency_code":"USD","value":15},"tax_total":{"currency_code":"USD","value":0}}}}]
+            });
+          },
+  
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+          },
+  
+          onError: function(err) {
+            console.log(err);
+          }
+        }).render('#paypal-button-container');
+      }
+      initPayPalButton();
+    </script>
+
+<div id="smart-button-container">
+    <div style="text-align: center;">
+      <div id="paypal-button-container"></div>
+    </div>
+  </div>
+<script src="https://www.paypal.com/sdk/js?client-id=AdzjXke4OxkMjDBjHxGZMU0Uk0ICcHo3GN3Kc_VxdzeM_Z9O7rp-GQdK7sb5KK0GjJYfcZFnybcg8fa7&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script>
+  function initPayPalButton() {
+    paypal.Buttons({
+      style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'paypal',
+        
+      },
+
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{"description":"11x14 Canvas","amount":{"currency_code":"USD","value":40,"breakdown":{"item_total":{"currency_code":"USD","value":25},"shipping":{"currency_code":"USD","value":15},"tax_total":{"currency_code":"USD","value":0}}}}]
+        });
+      },
+
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        });
+      },
+
+      onError: function(err) {
+        console.log(err);
+      }
+    }).render('#paypal-button-container');
+  }
+  initPayPalButton();
+</script>
+
+<p>Please text photo of pet and/or instructions to <strong>407-257-4875.</strong> Or email <strong>holly.steele1@aol.com.</strong>  Pet photo must be clear and close up with good lighting.  Please include your name and shipping address. Thank you!</p>
+
+    
+  
     </html>
